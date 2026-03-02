@@ -1,5 +1,18 @@
 # Premium Request Viewer
 
+[![Deploy to GitHub Pages](https://github.com/congiuluc/premium-request-csv-viewer/actions/workflows/deploy.yml/badge.svg)](https://github.com/congiuluc/premium-request-csv-viewer/actions/workflows/deploy.yml)
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-live-brightgreen?logo=github)](https://congiuluc.github.io/premium-request-csv-viewer/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/congiuluc/premium-request-csv-viewer?style=social)](https://github.com/congiuluc/premium-request-csv-viewer/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/congiuluc/premium-request-csv-viewer?style=social)](https://github.com/congiuluc/premium-request-csv-viewer/network/members)
+[![GitHub issues](https://img.shields.io/github/issues/congiuluc/premium-request-csv-viewer)](https://github.com/congiuluc/premium-request-csv-viewer/issues)
+[![GitHub last commit](https://img.shields.io/github/last-commit/congiuluc/premium-request-csv-viewer)](https://github.com/congiuluc/premium-request-csv-viewer/commits/main)
+
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-6-646CFF?logo=vite&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-v4-06B6D4?logo=tailwindcss&logoColor=white)
+
 A modern, dark-themed dashboard for analyzing GitHub Copilot premium request usage data. Upload a CSV report to explore KPIs, interactive charts, and drill into per-user or quota-exceedance details — all client-side with data stored in `sessionStorage`.
 
 ## 🚀 Live App
