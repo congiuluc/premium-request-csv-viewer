@@ -8,6 +8,10 @@ import type {
   Kpis,
 } from '../types';
 
+function round2(n: number): number {
+  return Math.round((n + Number.EPSILON) * 100) / 100;
+}
+
 interface UserAccumulator {
   username: string;
   organization: string;
@@ -60,12 +64,12 @@ export function aggregateByUser(rows: CsvRow[]): UserAggregate[] {
     username: u.username,
     organization: u.organization,
     costCenter: u.costCenter,
-    totalRequests: u.totalRequests,
-    grossAmount: u.grossAmount,
-    netAmount: u.netAmount,
-    discountAmount: u.discountAmount,
-    exceededRequests: u.exceededRequests,
-    overQuotaCost: u.overQuotaCost,
+    totalRequests: Math.round(u.totalRequests),
+    grossAmount: round2(u.grossAmount),
+    netAmount: round2(u.netAmount),
+    discountAmount: round2(u.discountAmount),
+    exceededRequests: Math.round(u.exceededRequests),
+    overQuotaCost: round2(u.overQuotaCost),
     quota: u.quota,
     modelsUsed: u.modelsUsed.size,
     exceededModels: u.exceededModels.size,
@@ -84,7 +88,14 @@ export function aggregateByDate(rows: CsvRow[]): DateAggregate[] {
     d.grossAmount += parseFloat(row.gross_amount) || 0;
     d.netAmount += parseFloat(row.net_amount) || 0;
   }
-  return Array.from(map.values()).sort((a, b) => a.date.localeCompare(b.date));
+  return Array.from(map.values())
+    .map((d) => ({
+      date: d.date,
+      totalRequests: Math.round(d.totalRequests),
+      grossAmount: round2(d.grossAmount),
+      netAmount: round2(d.netAmount),
+    }))
+    .sort((a, b) => a.date.localeCompare(b.date));
 }
 
 export function aggregateByModel(rows: CsvRow[]): ModelAggregate[] {
@@ -99,7 +110,14 @@ export function aggregateByModel(rows: CsvRow[]): ModelAggregate[] {
     m.grossAmount += parseFloat(row.gross_amount) || 0;
     m.netAmount += parseFloat(row.net_amount) || 0;
   }
-  return Array.from(map.values()).sort((a, b) => b.totalRequests - a.totalRequests);
+  return Array.from(map.values())
+    .map((m) => ({
+      model: m.model,
+      totalRequests: Math.round(m.totalRequests),
+      grossAmount: round2(m.grossAmount),
+      netAmount: round2(m.netAmount),
+    }))
+    .sort((a, b) => b.totalRequests - a.totalRequests);
 }
 
 export function aggregateByOrg(rows: CsvRow[]): OrgAggregate[] {
@@ -119,7 +137,13 @@ export function aggregateByOrg(rows: CsvRow[]): OrgAggregate[] {
     entry.users.add(row.username);
   }
   return Array.from(map.values())
-    .map((e) => ({ ...e.org, userCount: e.users.size }))
+    .map((e) => ({
+      ...e.org,
+      totalRequests: Math.round(e.org.totalRequests),
+      grossAmount: round2(e.org.grossAmount),
+      netAmount: round2(e.org.netAmount),
+      userCount: e.users.size,
+    }))
     .sort((a, b) => b.totalRequests - a.totalRequests);
 }
 
@@ -151,10 +175,10 @@ export function computeKpis(rows: CsvRow[]): Kpis {
   }
 
   return {
-    totalRequests,
-    grossAmount,
-    netAmount,
-    discountAmount,
+    totalRequests: Math.round(totalRequests),
+    grossAmount: round2(grossAmount),
+    netAmount: round2(netAmount),
+    discountAmount: round2(discountAmount),
     uniqueUsers: users.size,
     uniqueModels: models.size,
     exceedingUsersCount: exceedingUsers.size,
@@ -174,5 +198,13 @@ export function aggregateBySku(rows: CsvRow[]): SkuAggregate[] {
     s.grossAmount += parseFloat(row.gross_amount) || 0;
     s.netAmount += parseFloat(row.net_amount) || 0;
   }
-  return Array.from(map.values()).sort((a, b) => b.totalRequests - a.totalRequests);
+  return Array.from(map.values())
+    .map((s) => ({
+      sku: s.sku,
+      product: s.product,
+      totalRequests: Math.round(s.totalRequests),
+      grossAmount: round2(s.grossAmount),
+      netAmount: round2(s.netAmount),
+    }))
+    .sort((a, b) => b.totalRequests - a.totalRequests);
 }
