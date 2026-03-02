@@ -23,6 +23,7 @@ interface UserAccumulator {
   exceededRequests: number;
   overQuotaCost: number;
   quota: number;
+  latestQuotaDate: string;
   modelsUsed: Set<string>;
   exceededModels: Set<string>;
 }
@@ -43,6 +44,7 @@ export function aggregateByUser(rows: CsvRow[]): UserAggregate[] {
         exceededRequests: 0,
         overQuotaCost: 0,
         quota: parseFloat(row.total_monthly_quota) || 0,
+        latestQuotaDate: row.date || '',
         modelsUsed: new Set<string>(),
         exceededModels: new Set<string>(),
       });
@@ -54,6 +56,10 @@ export function aggregateByUser(rows: CsvRow[]): UserAggregate[] {
     u.netAmount += parseFloat(row.net_amount) || 0;
     u.discountAmount += parseFloat(row.discount_amount) || 0;
     u.modelsUsed.add(row.model);
+    if (row.date && row.date >= u.latestQuotaDate) {
+      u.quota = parseFloat(row.total_monthly_quota) || 0;
+      u.latestQuotaDate = row.date;
+    }
     if (String(row.exceeds_quota).toLowerCase() === 'true') {
       u.exceededRequests += qty;
       u.overQuotaCost += parseFloat(row.net_amount) || 0;

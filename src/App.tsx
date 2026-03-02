@@ -131,7 +131,7 @@ function Dashboard({
 }
 
 export default function App() {
-  const { data, saveData, clearData } = useSessionData();
+  const { data, saveData, clearData, loading } = useSessionData();
 
   const usernames = useMemo(() => {
     if (!data) return [];
@@ -139,6 +139,14 @@ export default function App() {
   }, [data]);
 
   const { profiles, loading: profilesLoading, resolve } = useGitHubProfiles(usernames);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center p-4">
+        <div className="animate-pulse-soft text-muted-foreground text-sm">Loading data…</div>
+      </div>
+    );
+  }
 
   if (!data) {
     return (
