@@ -1,7 +1,7 @@
 import { useRef, useState, useCallback, useEffect } from 'react';
 import Papa from 'papaparse';
 import type { CsvRow } from '../types';
-import { UploadCloud } from 'lucide-react';
+import { UploadCloud, Github } from 'lucide-react';
 
 interface CsvUploadProps {
   onData: (rows: CsvRow[]) => void;
@@ -68,6 +68,16 @@ export default function CsvUpload({ onData }: CsvUploadProps) {
         <p className="text-muted-foreground text-sm">
           Analyze your GitHub Copilot premium request usage data
         </p>
+        <a
+          href="https://github.com/congiuluc/premium-request-csv-viewer"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 mt-2 text-xs text-muted-foreground hover:text-primary transition-colors"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <Github className="w-3.5 h-3.5" />
+          congiuluc/premium-request-csv-viewer
+        </a>
       </div>
       <div
         onDragOver={handleDragOver}
@@ -110,6 +120,30 @@ export default function CsvUpload({ onData }: CsvUploadProps) {
             <p className="text-destructive text-sm font-medium">{error}</p>
           </div>
         )}
+      </div>
+      <div className="mt-4 p-4 rounded-xl bg-secondary/60 border border-border/60">
+        <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">
+          How to get your CSV
+        </p>
+        <ol className="text-xs text-muted-foreground space-y-1 list-decimal list-inside leading-relaxed">
+          <li>Go to your GitHub organization's <strong className="text-foreground">Billing & plans</strong></li>
+          <li>Navigate to <strong className="text-foreground">Copilot</strong> → <strong className="text-foreground">Usage</strong></li>
+          <li>Select the desired date range and export the CSV report</li>
+          <li>Upload the downloaded CSV file above</li>
+        </ol>
+        <p className="text-xs text-muted-foreground mt-3 leading-relaxed">
+          <span className="font-medium text-foreground">Expected columns:</span>{' '}
+          <code className="text-[10px] bg-secondary px-1 py-0.5 rounded">date</code>,{' '}
+          <code className="text-[10px] bg-secondary px-1 py-0.5 rounded">username</code>,{' '}
+          <code className="text-[10px] bg-secondary px-1 py-0.5 rounded">product</code>,{' '}
+          <code className="text-[10px] bg-secondary px-1 py-0.5 rounded">sku</code>,{' '}
+          <code className="text-[10px] bg-secondary px-1 py-0.5 rounded">model</code>,{' '}
+          <code className="text-[10px] bg-secondary px-1 py-0.5 rounded">quantity</code>,{' '}
+          <code className="text-[10px] bg-secondary px-1 py-0.5 rounded">gross_amount</code>,{' '}
+          <code className="text-[10px] bg-secondary px-1 py-0.5 rounded">net_amount</code>,{' '}
+          <code className="text-[10px] bg-secondary px-1 py-0.5 rounded">exceeds_quota</code>,{' '}
+          and more.
+        </p>
       </div>
     </div>
   );

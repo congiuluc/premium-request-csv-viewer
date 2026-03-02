@@ -2,6 +2,12 @@
 
 A modern, dark-themed dashboard for analyzing GitHub Copilot premium request usage data. Upload a CSV report to explore KPIs, interactive charts, and drill into per-user or quota-exceedance details — all client-side with data stored in `sessionStorage`.
 
+## 🚀 Live App
+
+**[https://congiuluc.github.io/premium-request-csv-viewer/](https://congiuluc.github.io/premium-request-csv-viewer/)**
+
+No installation required — open the link, upload your CSV, and start exploring your data instantly.
+
 ## Screenshots
 
 > All screenshots below use dummy data for demonstration purposes.
