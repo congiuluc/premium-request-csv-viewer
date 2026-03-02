@@ -1,6 +1,42 @@
 # Premium Request Viewer
 
+[![Deploy to GitHub Pages](https://github.com/congiuluc/premium-request-csv-viewer/actions/workflows/deploy.yml/badge.svg)](https://github.com/congiuluc/premium-request-csv-viewer/actions/workflows/deploy.yml)
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-live-brightgreen?logo=github)](https://congiuluc.github.io/premium-request-csv-viewer/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/congiuluc/premium-request-csv-viewer?style=social)](https://github.com/congiuluc/premium-request-csv-viewer/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/congiuluc/premium-request-csv-viewer?style=social)](https://github.com/congiuluc/premium-request-csv-viewer/network/members)
+[![GitHub issues](https://img.shields.io/github/issues/congiuluc/premium-request-csv-viewer)](https://github.com/congiuluc/premium-request-csv-viewer/issues)
+[![GitHub last commit](https://img.shields.io/github/last-commit/congiuluc/premium-request-csv-viewer)](https://github.com/congiuluc/premium-request-csv-viewer/commits/main)
+
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-6-646CFF?logo=vite&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-v4-06B6D4?logo=tailwindcss&logoColor=white)
+
 A modern, dark-themed dashboard for analyzing GitHub Copilot premium request usage data. Upload a CSV report to explore KPIs, interactive charts, and drill into per-user or quota-exceedance details — all client-side with data stored in `sessionStorage`.
+
+## 🚀 Live App
+
+**[https://congiuluc.github.io/premium-request-csv-viewer/](https://congiuluc.github.io/premium-request-csv-viewer/)**
+
+No installation required — open the link, upload your CSV, and start exploring your data instantly.
+
+## 📥 How to Get Your CSV
+
+The app expects a **premium request usage report** exported from GitHub. Follow these steps:
+
+1. **Navigate to Billing** — go to your organization or enterprise page, then click **Billing & Licensing** in the sidebar (organization) or top tab (enterprise).
+2. **Open Premium Request Analytics** — under the **Usage** section, click **Premium request analytics**.
+3. **Request the report** — at the top of the page, click **Get usage report**.
+4. **Specify report details** — choose your desired date range and any other options.
+5. **Send the report** — click **Email me the report**. GitHub will send a download link to your primary email address (the link expires after 24 hours).
+6. **Download and upload** — download the CSV from the email, then drag-and-drop or select it in this app.
+
+> 📄 For full details see the official GitHub docs: [Downloading usage reports](https://docs.github.com/en/billing/how-tos/products/view-productlicense-use#downloading-usage-reports)
+
+The report CSV will contain the following columns:
+
+`date`, `username`, `product`, `sku`, `model`, `quantity`, `unit_type`, `applied_cost_per_quantity`, `gross_amount`, `discount_amount`, `net_amount`, `exceeds_quota`, `total_monthly_quota`, `organization`, `cost_center_name`
 
 ## Screenshots
 
@@ -86,9 +122,7 @@ npm run build
 npm run preview
 ```
 
-Open the app and upload a CSV file with the expected columns:
-
-`date`, `username`, `product`, `sku`, `model`, `quantity`, `unit_type`, `applied_cost_per_quantity`, `gross_amount`, `discount_amount`, `net_amount`, `exceeds_quota`, `total_monthly_quota`, `organization`, `cost_center_name`
+Open the app and upload a CSV file exported from GitHub (see [How to Get Your CSV](#-how-to-get-your-csv) above).
 
 ## Deployment
 
