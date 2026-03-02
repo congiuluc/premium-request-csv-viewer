@@ -2,6 +2,58 @@
 
 A modern, dark-themed dashboard for analyzing GitHub Copilot premium request usage data. Upload a CSV report to explore KPIs, interactive charts, and drill into per-user or quota-exceedance details — all client-side with data stored in `sessionStorage`.
 
+## Screenshots
+
+> All screenshots below use dummy data for demonstration purposes.
+
+### CSV Upload
+
+Drag-and-drop or file picker with animated upload zone; parsed with PapaParse.
+
+![CSV Upload](docs/screenshots/01-csv-upload.png)
+
+### KPI Cards
+
+Color-accented cards displaying total requests, gross/net costs, unique users & models, exceeding users, and date range.
+
+![KPI Cards](docs/screenshots/02-kpi-cards.png)
+
+### Enhanced Filtering
+
+Filter by date range, username, and multiple selections for models and organizations with "Select All" capabilities.
+
+![Filter Bar](docs/screenshots/03-filter-bar.png)
+
+### Interactive Charts
+
+Daily trend (area chart with gradient fill), top users (horizontal bar), model distribution (donut pie), and org breakdown (vertical bar).
+
+![Interactive Charts](docs/screenshots/04-charts.png)
+
+### Quota Exceedance
+
+Stacked bar chart highlighting users who exceeded their premium request quota with cost breakdown.
+
+![Quota Exceedance](docs/screenshots/05-quota-exceedance.png)
+
+### Data Table
+
+Full transaction table with inline search, column sorting, pagination with chevron navigation, and CSV export.
+
+![Data Table](docs/screenshots/06-data-table.png)
+
+### Exceedance Report
+
+Dedicated page listing users who exceeded quota with cost breakdown and KPI summary.
+
+![Exceedance Report](docs/screenshots/07-exceedance-report.png)
+
+### User Detail
+
+Per-user view with daily usage chart, model breakdown, SKU table, and full transaction list.
+
+![User Detail](docs/screenshots/08-user-detail.png)
+
 ## Features
 
 - **CSV Upload** — drag-and-drop or file picker with animated upload zone; parsed with PapaParse
