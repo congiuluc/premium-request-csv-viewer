@@ -21,6 +21,23 @@ A modern, dark-themed dashboard for analyzing GitHub Copilot premium request usa
 
 No installation required — open the link, upload your CSV, and start exploring your data instantly.
 
+## 📥 How to Get Your CSV
+
+The app expects a **premium request usage report** exported from GitHub. Follow these steps:
+
+1. **Navigate to Billing** — go to your organization or enterprise page, then click **Billing & Licensing** in the sidebar (organization) or top tab (enterprise).
+2. **Open Premium Request Analytics** — under the **Usage** section, click **Premium request analytics**.
+3. **Request the report** — at the top of the page, click **Get usage report**.
+4. **Specify report details** — choose your desired date range and any other options.
+5. **Send the report** — click **Email me the report**. GitHub will send a download link to your primary email address (the link expires after 24 hours).
+6. **Download and upload** — download the CSV from the email, then drag-and-drop or select it in this app.
+
+> 📄 For full details see the official GitHub docs: [Downloading usage reports](https://docs.github.com/en/billing/how-tos/products/view-productlicense-use#downloading-usage-reports)
+
+The report CSV will contain the following columns:
+
+`date`, `username`, `product`, `sku`, `model`, `quantity`, `unit_type`, `applied_cost_per_quantity`, `gross_amount`, `discount_amount`, `net_amount`, `exceeds_quota`, `total_monthly_quota`, `organization`, `cost_center_name`
+
 ## Screenshots
 
 > All screenshots below use dummy data for demonstration purposes.
@@ -105,9 +122,7 @@ npm run build
 npm run preview
 ```
 
-Open the app and upload a CSV file with the expected columns:
-
-`date`, `username`, `product`, `sku`, `model`, `quantity`, `unit_type`, `applied_cost_per_quantity`, `gross_amount`, `discount_amount`, `net_amount`, `exceeds_quota`, `total_monthly_quota`, `organization`, `cost_center_name`
+Open the app and upload a CSV file exported from GitHub (see [How to Get Your CSV](#-how-to-get-your-csv) above).
 
 ## Deployment
 
