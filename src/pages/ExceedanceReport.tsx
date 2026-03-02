@@ -70,7 +70,7 @@ export default function ExceedanceReport({ data, profiles }: Props) {
         },
       }),
       columnHelper.accessor('organization', { header: 'Organization' }),
-      columnHelper.accessor('totalMonthlyQuota', {
+      columnHelper.accessor('quota', {
         header: 'Quota',
         cell: (info) => info.getValue().toLocaleString(),
       }),
@@ -116,7 +116,7 @@ export default function ExceedanceReport({ data, profiles }: Props) {
       Username: r.username,
       Name: displayName(r.username, profiles),
       Organization: r.organization,
-      Quota: r.totalMonthlyQuota,
+      Quota: r.quota,
       'Total Requests': r.totalRequests,
       'Exceeded Requests': r.exceededRequests,
       'Models Used': r.modelsUsed,
