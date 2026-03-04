@@ -21,6 +21,10 @@ A modern, dark-themed dashboard for analyzing GitHub Copilot premium request usa
 
 No installation required — open the link, upload your CSV, and start exploring your data instantly.
 
+## 📖 User Manual
+
+For detailed step-by-step instructions, see the **[User Manual](docs/user-manual.md)**.
+
 ## 📥 How to Get Your CSV
 
 The app expects a **premium request usage report** exported from GitHub. Follow these steps:
